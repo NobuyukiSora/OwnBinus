@@ -5,27 +5,19 @@
  * @format
  */
 
-import {NavigationContainer} from '@react-navigation/native';
+import type { PropsWithChildren } from 'react';
 import React from 'react';
-import type {PropsWithChildren} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   useColorScheme,
-  View,
+  View
 } from 'react-native';
 
 import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
+  Colors
 } from 'react-native/Libraries/NewAppScreen';
-import {StackNavigation} from './src/navigation/stackNavigation';
+import { StackNavigation } from './src/navigation/stackNavigation';
 
 type SectionProps = PropsWithChildren<{
   title: string;

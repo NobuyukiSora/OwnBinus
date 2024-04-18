@@ -13,6 +13,7 @@ export function StackNavigation() {
   const style = {
     backgroundColor: isDarkMode ? '#000000' : '#ffffff',
     textColor: isDarkMode ? '#ffffff' : '#000000',
+    notificationColor: isDarkMode ? '#000000' : '#ffffff',
   };
   return (
     <NavigationContainer
@@ -23,12 +24,13 @@ export function StackNavigation() {
           primary: '',
           card: '',
           border: '',
-          notification: '',
-          text: '',
+          notification: style.notificationColor,
+          text: style.textColor,
           background: style.backgroundColor,
         },
+
       }}>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>

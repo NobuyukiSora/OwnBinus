@@ -30,10 +30,9 @@ const Home = () => {
 
                 
             </ScrollView>
-            <Text>{'HELLO YOU'}</Text>
             <BButton title='Button' onPress={()=>navigationAction.navigate('Profile', {})}></BButton>
-            {/* <BBottomNavigation/> */}
-            
+            <BBottomNavigation/>
+
         </View>
 
         </SafeAreaView>

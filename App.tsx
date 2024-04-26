@@ -18,6 +18,7 @@ import {
   Colors
 } from 'react-native/Libraries/NewAppScreen';
 import { StackNavigation } from './src/navigation/stackNavigation';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -56,7 +57,11 @@ function App(): React.JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  return <StackNavigation />;
+  return (
+    <SafeAreaProvider>
+      <StackNavigation />
+    </SafeAreaProvider>
+);
 }
 
 {

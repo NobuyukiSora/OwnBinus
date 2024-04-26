@@ -1,15 +1,22 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {blue, transparantBlack} from '../color';
+import { StyleSheet, TouchableOpacity, View, useColorScheme } from 'react-native';
+import Course from '../../image/icon/Ico-Course.svg';
+import Forum from '../../image/icon/Ico-Forum.svg';
+import Health from '../../image/icon/Ico-Health.svg';
 import Home from '../../image/icon/Ico-Home.svg';
 import Schadule from '../../image/icon/Ico-Schadule.svg';
-import Course from '../../image/icon/Ico-Course.svg';
-import Health from '../../image/icon/Ico-Health.svg';
-import Forum from '../../image/icon/Ico-Forum.svg';
-import {Metrics} from '../metrics';
+import { transparantBlack70, transparantWhite70 } from '../color';
+import { Metrics } from '../metrics';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const BBottomNavigation = () => {
+  const insets = useSafeAreaInsets()
+  const isDarkMode = useColorScheme() === 'dark';
+    const styleTheme = {
+        backgroundColor: isDarkMode ? '#000000' : '#ffffff',
+        navigationBarColor: isDarkMode ? transparantBlack70 : transparantWhite70,
+      };
   return (
-    <View style={Styles.bottomNavigation}>
+    <View style={{backgroundColor: styleTheme.navigationBarColor, paddingBottom: insets.bottom/2}}>
       <View style={Styles.buttonsContainer}>
         <TouchableOpacity>
           <Course height={20} width={20} />
@@ -32,9 +39,6 @@ const BBottomNavigation = () => {
 };
 
 const Styles = StyleSheet.create({
-  bottomNavigation: {
-    backgroundColor: transparantBlack,
-  },
   buttonsContainer: {
     justifyContent: 'space-around',
     flexDirection: 'row',

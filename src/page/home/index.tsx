@@ -2,17 +2,16 @@ import {
   FlatList,
   Image,
   ImageBackground,
-  SafeAreaView,
   ScrollView,
+  StyleSheet,
   Text,
   TouchableOpacity,
   View,
   useColorScheme,
 } from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import BBottomNavigation from '../../component/bottomNavigation';
-import BButton from '../../component/button';
 import {
-  black,
   green,
   orange,
   red,
@@ -24,35 +23,9 @@ import {
   yellow,
 } from '../../component/color';
 import {Metrics} from '../../component/metrics';
-import navigationAction from '../../navigation/navigationAction';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-
-const scoreData = [
-  {title: 'GPA', score: '3.00', color: yellow},
-  {title: 'SAT', score: '219', color: green},
-  {title: 'ComServ', score: '13', color: orange},
-];
-
-const ongoingClass = [
-  {
-    course: 'Web Design',
-    class: 'LA01 - LEC',
-    session: 'HTML introduction',
-    schedule: '-3d 13h',
-  },
-  {
-    course: 'District Matematic',
-    class: 'LA02 - LEC',
-    session: 'Geometry',
-    schedule: '5d 13h',
-  },
-  {
-    course: 'Basic Programing',
-    class: 'LA02 - LEC',
-    session: 'C++',
-    schedule: 'now',
-  },
-];
+import Clock from '../../image/icon/Ico-Clock.svg';
+import {announcement, ongoingClass, scoreData, upcomingClass} from './data';
+import moment from 'moment';
 
 const Home = () => {
   const insets = useSafeAreaInsets();
@@ -74,7 +47,8 @@ const Home = () => {
           backgroundColor: styleTheme.backgroundColor,
           paddingTop: insets.top,
         }}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          {/* PROFILE */}
           <View
             style={{
               flexDirection: 'row',
@@ -146,6 +120,8 @@ const Home = () => {
               </Text>
             </TouchableOpacity>
           </View>
+
+          {/* ONGOING */}
           <View
             style={{
               backgroundColor: styleTheme.cardColor,
@@ -203,13 +179,21 @@ const Home = () => {
                         <View style={{justifyContent: 'center'}}>
                           {item.schedule === 'now' ? (
                             <TouchableOpacity>
-                                <View style={{backgroundColor: red, padding: 2, borderRadius: 5}}>
-                                    <Text style={{
-                                fontSize: 16,
-                                fontWeight: '500',
-                                color: white
-                              }}>{'Live Now'}</Text>
-                                </View>
+                              <View
+                                style={{
+                                  backgroundColor: red,
+                                  padding: 2,
+                                  borderRadius: 5,
+                                }}>
+                                <Text
+                                  style={{
+                                    fontSize: 16,
+                                    fontWeight: '500',
+                                    color: white,
+                                  }}>
+                                  {'Live Now'}
+                                </Text>
+                              </View>
                             </TouchableOpacity>
                           ) : (
                             <Text
@@ -238,9 +222,226 @@ const Home = () => {
             </View>
           </View>
 
-          {/* <BButton
-            title="Button"
-            onPress={() => navigationAction.navigate('Profile', {})}></BButton> */}
+          {/* UPCOMING */}
+          <View
+            style={{
+              backgroundColor: styleTheme.cardColor,
+              margin: 10,
+              padding: 10,
+              borderRadius: 10,
+            }}>
+            <View>
+              <Text
+                style={{
+                  fontSize: 25,
+                  fontWeight: '700',
+                  color: styleTheme.textColor,
+                  marginBottom: 10,
+                }}>
+                {'Upcoming'}
+              </Text>
+            </View>
+            <View>
+              <FlatList
+                data={upcomingClass}
+                keyExtractor={item => item.course}
+                renderItem={({item}) => {
+                  return (
+                    <View>
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          justifyContent: 'space-between',
+                        }}>
+                        <View style={{gap: 2}}>
+                          <Text
+                            style={{
+                              fontSize: 16,
+                              fontWeight: '700',
+                              color: styleTheme.textColor,
+                            }}>
+                            {item.type}
+                          </Text>
+                          <Text
+                            style={{
+                              fontSize: 18,
+                              fontWeight: '700',
+                              color: styleTheme.textColor,
+                            }}>
+                            {item.course}
+                          </Text>
+                          <Text
+                            style={{
+                              fontSize: 13,
+                              fontWeight: '700',
+                              color: styleTheme.textColor,
+                            }}>
+                            {item.class}
+                          </Text>
+                        </View>
+                        <View style={{justifyContent: 'center'}}>
+                          {item.schedule === 'now' ? (
+                            <TouchableOpacity>
+                              <View
+                                style={{
+                                  backgroundColor: red,
+                                  padding: 2,
+                                  borderRadius: 5,
+                                }}>
+                                <Text
+                                  style={{
+                                    fontSize: 16,
+                                    fontWeight: '500',
+                                    color: white,
+                                  }}>
+                                  {'Live Now'}
+                                </Text>
+                              </View>
+                            </TouchableOpacity>
+                          ) : (
+                            <View style={{right: 0}}>
+                              <View
+                                style={{
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  justifyContent: 'flex-end',
+                                }}>
+                                <Clock
+                                  height={15}
+                                  width={15}
+                                  style={{marginRight: 3}}
+                                  fill={styleTheme.textColor}
+                                />
+                                <Text
+                                  style={{
+                                    textAlign: 'right',
+                                    fontSize: 16,
+                                    fontWeight: '700',
+                                    color: styleTheme.textColor,
+                                  }}>
+                                  {item.schedule}
+                                </Text>
+                              </View>
+                              <Text
+                                style={{
+                                  textAlign: 'right',
+                                  fontSize: 16,
+                                  fontWeight: '700',
+                                  color: styleTheme.textColor,
+                                }}>
+                                {item.time}
+                              </Text>
+                            </View>
+                          )}
+                        </View>
+                      </View>
+                      <View
+                        style={{
+                          height: 1,
+                          backgroundColor: styleTheme.barColor,
+                          marginBottom: 5,
+                          marginTop: 2,
+                        }}
+                      />
+                    </View>
+                  );
+                }}
+              />
+            </View>
+          </View>
+
+          {/* UPCOMING */}
+          <View
+            style={{
+              backgroundColor: styleTheme.cardColor,
+              margin: 10,
+              padding: 10,
+              borderRadius: 10,
+            }}>
+            <View>
+              <Text
+                style={{
+                  fontSize: 25,
+                  fontWeight: '700',
+                  color: styleTheme.textColor,
+                  marginBottom: 10,
+                }}>
+                {'Announcement'}
+              </Text>
+            </View>
+            <View>
+              <FlatList
+                data={announcement}
+                keyExtractor={item => item.title}
+                renderItem={({item}) => {
+                  const timeCount = moment(item.date, 'DD/MM/YYYY').fromNow();
+
+                  return (
+                    <View>
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          justifyContent: 'space-between',
+                        }}>
+                        <View style={{gap: 2}}>
+                          <Text
+                            style={{
+                              fontSize: 16,
+                              fontWeight: '700',
+                              color: styleTheme.textColor,
+                            }}>
+                            {item.from}
+                          </Text>
+                          <Text
+                            style={{
+                              fontSize: 18,
+                              fontWeight: '700',
+                              color: styleTheme.textColor,
+                            }}>
+                            {item.title}
+                          </Text>
+                          {!!item.miniDesc ? (
+                            <Text
+                              style={{
+                                fontSize: 13,
+                                fontWeight: '700',
+                                color: styleTheme.textColor,
+                              }}>
+                              {item.miniDesc}
+                            </Text>
+                          ) : null}
+                        </View>
+                        <View style={{justifyContent: 'center'}}>
+                          <Text
+                            style={{
+                              textAlign: 'right',
+                              fontSize: 16,
+                              fontWeight: '700',
+                              color: styleTheme.textColor,
+                            }}>
+                            {timeCount
+                              .replace(' days ago', 'd')
+                              .replace('a month ago', '1m')
+                              .replace(' months ago', 'm')
+                              .replace('a year ago', '1y')
+                              .replace(' years ago', 'y')}
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={{
+                          height: 1,
+                          backgroundColor: styleTheme.barColor,
+                          marginBottom: 5,
+                          marginTop: 2,
+                        }}
+                      />
+                    </View>
+                  );
+                }}
+              />
+            </View>
+          </View>
         </ScrollView>
         <BBottomNavigation />
       </ImageBackground>

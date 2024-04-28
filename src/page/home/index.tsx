@@ -26,6 +26,7 @@ import {Metrics} from '../../component/metrics';
 import Clock from '../../image/icon/Ico-Clock.svg';
 import {announcement, ongoingClass, scoreData, upcomingClass} from './data';
 import moment from 'moment';
+import navigationAction from '../../navigation/navigationAction';
 
 const Home = () => {
   const insets = useSafeAreaInsets();
@@ -103,6 +104,7 @@ const Home = () => {
               />
             </View>
             <TouchableOpacity
+            onPress={() => navigationAction.navigate('Profile', {})}
               style={{
                 position: 'absolute',
                 bottom: 0,

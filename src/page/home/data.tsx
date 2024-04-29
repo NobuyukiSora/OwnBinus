@@ -1,5 +1,15 @@
 import {green, orange, yellow} from '../../component/color';
 
+export const dataProfile = {
+  name: 'aldo',
+  card: 'red',
+  upcomingPaid: 3500000,
+  paid: 10000000,
+  unpaid: 500000,
+
+  
+}
+
 export const scoreData = [
   {title: 'GPA', score: '3.00', color: yellow},
   {title: 'SAT', score: '219', color: green},

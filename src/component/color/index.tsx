@@ -1,4 +1,8 @@
-export const red = '#FF5959'
+import { useColorScheme } from "react-native"
+
+const isDarkMode = useColorScheme() === 'dark';
+
+export const red = isDarkMode ? '#FF5959' : '#D35050'
 export const blue = '#5CB1FF'
 export const white = '#ffffff'
 export const black = '#000000'
@@ -10,4 +14,5 @@ export const transparantBlack70 = 'rgba(0, 0, 0, 0.70)'
 export const transparantBlack40 = 'rgba(0, 0, 0, 0.40)'
 export const transparantWhite70 = 'rgba(207, 207, 207, 0.7)'
 export const transparantWhite40 = 'rgba(207, 207, 207, 0.4)'
+
 

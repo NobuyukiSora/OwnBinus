@@ -24,7 +24,7 @@ import {
 } from '../../component/color';
 import {Metrics} from '../../component/metrics';
 import Clock from '../../image/icon/Ico-Clock.svg';
-import {announcement, ongoingClass, scoreData, upcomingClass} from './data';
+import {announcement, dataProfile, ongoingClass, scoreData, upcomingClass} from './data';
 import moment from 'moment';
 import navigationAction from '../../navigation/navigationAction';
 
@@ -69,7 +69,7 @@ const Home = () => {
                   borderRadius: 50,
                 }}
               />
-              <Text style={{color: styleTheme.textColor}}>{'HI'}</Text>
+              <Text style={{color: styleTheme.textColor}}>{`HI, ${dataProfile.name}`}</Text>
             </View>
             <View>
               <FlatList

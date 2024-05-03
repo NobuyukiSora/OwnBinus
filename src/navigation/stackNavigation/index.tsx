@@ -4,6 +4,10 @@ import Profile from '../../page/profile';
 import {NavigationContainer} from '@react-navigation/native';
 import navigationAction from '../navigationAction';
 import {useColorScheme} from 'react-native';
+import CalendarScreen from '../../page/calendar';
+import HomeScreen from '../../page/home';
+import ProfileScreen from '../../page/profile';
+import QRScreen from '../../page/qr';
 
 const Stack = createStackNavigator();
 
@@ -31,8 +35,11 @@ export function StackNavigation() {
 
       }}>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+        <Stack.Screen name="QRScreen" component={QRScreen} />
+        <Stack.Screen name="CalendarScreen" component={CalendarScreen} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

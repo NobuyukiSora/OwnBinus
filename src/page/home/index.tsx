@@ -29,7 +29,7 @@ import {announcement, dataProfile, ongoingClass, scoreData, upcomingClass} from 
 import moment from 'moment';
 import navigationAction from '../../navigation/navigationAction';
 
-const Home = () => {
+const HomeScreen = () => {
   const insets = useSafeAreaInsets();
   const isDarkMode = useColorScheme() === 'dark';
   const styleTheme = {
@@ -105,7 +105,7 @@ const Home = () => {
               />
             </View>
             <TouchableOpacity
-            onPress={() => navigationAction.navigate('Profile', {})}
+            onPress={() => navigationAction.navigate('ProfileScreen', {})}
               style={{
                 position: 'absolute',
                 bottom: 0,
@@ -452,4 +452,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeScreen;

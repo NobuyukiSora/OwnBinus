@@ -27,7 +27,7 @@ function navigateSameScreen(screenName: string, params: any, key: any) {
 
 function resetNavigation(screenName: string, params: any) {
   if (_navigator.isReady()) {
-    if (screenName === "Home") {
+    if (screenName === "HomeScreen") {
       _navigator.dispatch(
         CommonActions.reset({
           index: 0,
@@ -38,7 +38,7 @@ function resetNavigation(screenName: string, params: any) {
       _navigator.dispatch(
         CommonActions.reset({
           index: 1,
-          routes: [{ name: "Home" }, { name: screenName, params }],
+          routes: [{ name: "HomeScreen" }, { name: screenName, params }],
         })
       );
     }

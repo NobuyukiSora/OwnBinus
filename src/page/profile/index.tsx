@@ -26,9 +26,9 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Header from '../../component/header';
 import {Metrics} from '../../component/metrics';
 import {dataProfile} from '../home/data';
-import {defaultStyles, themeDark} from '../../component/defaultStyles';
+import {defaultStyles} from '../../component/defaultStyles';
 
-const Profile = () => {
+const ProfileScreen = () => {
   const insets = useSafeAreaInsets();
   const isDarkMode = useColorScheme() === 'dark';
   const styleTheme = {
@@ -221,4 +221,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileScreen;

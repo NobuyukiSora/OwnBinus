@@ -12,6 +12,7 @@ import {
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import BBottomNavigation from '../../component/bottomNavigation';
 import {
+  black,
   green,
   orange,
   red,
@@ -32,8 +33,8 @@ const Home = () => {
   const insets = useSafeAreaInsets();
   const isDarkMode = useColorScheme() === 'dark';
   const styleTheme = {
-    backgroundColor: isDarkMode ? '#000000' : '#ffffff',
-    textColor: isDarkMode ? '#ffffff' : '#000000',
+    backgroundColor: isDarkMode ? black : white,
+    textColor: isDarkMode ? white : black,
     cardColor: isDarkMode ? transparantBlack40 : transparantWhite40,
     barColor: isDarkMode ? transparantBlack70 : transparantWhite70,
   };

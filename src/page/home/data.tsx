@@ -6,7 +6,11 @@ export const dataProfile = {
   upcomingPaid: 3500000,
   paid: 10000000,
   unpaid: 500000,
-
+  gradeScore: [
+    {semester: 'Odd Semester, 2020', grade: 3.00},
+    {semester: 'Even Semester, 2020', grade: 1.70},
+    {semester: 'Odd Semester, 2021', grade: 4.00},
+  ]
   
 }
 

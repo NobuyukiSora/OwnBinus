@@ -1,5 +1,6 @@
 import {
   Button,
+  FlatList,
   Image,
   ImageBackground,
   ScrollView,
@@ -10,7 +11,10 @@ import {
 } from 'react-native';
 import navigationAction from '../../navigation/navigationAction';
 import {
-    red,
+  black,
+  green,
+  orange,
+  red,
   transparantBlack40,
   transparantBlack70,
   transparantWhite40,
@@ -22,13 +26,14 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Header from '../../component/header';
 import {Metrics} from '../../component/metrics';
 import {dataProfile} from '../home/data';
+import {defaultStyles, themeDark} from '../../component/defaultStyles';
 
 const Profile = () => {
   const insets = useSafeAreaInsets();
   const isDarkMode = useColorScheme() === 'dark';
   const styleTheme = {
-    color: isDarkMode ? '#000000' : '#ffffff',
-    inverseColor: isDarkMode ? '#ffffff' : '#000000',
+    color: isDarkMode ? black : white,
+    inverseColor: isDarkMode ? white : black,
     color40: isDarkMode ? transparantBlack40 : transparantWhite40,
     color70: isDarkMode ? transparantBlack70 : transparantWhite70,
   };
@@ -48,6 +53,7 @@ const Profile = () => {
           onPress={() => navigationAction.goBack()}
         />
         <ScrollView>
+          {/* Profile */}
           <View style={{}}>
             <View
               style={{
@@ -94,6 +100,8 @@ const Profile = () => {
               />
             </View>
           </View>
+
+          {/* Payment */}
           <View
             style={{
               backgroundColor: styleTheme.color40,
@@ -132,16 +140,17 @@ const Profile = () => {
                   {'Upcoming'}
                 </Text>
                 <Text
-                  style={{color: styleTheme.inverseColor, textAlign: 'right', fontWeight: '700'}}>
+                  style={{
+                    color: styleTheme.inverseColor,
+                    textAlign: 'right',
+                    fontWeight: '700',
+                  }}>
                   {dataProfile.upcomingPaid.toLocaleString('id-ID', {
                     style: 'currency',
                     currency: 'IDR',
                   })}
                 </Text>
-                <Text
-                  style={{color: red, textAlign: 'right'}}>
-                  {'Unpaid'}
-                </Text>
+                <Text style={{color: red, textAlign: 'right'}}>{'Unpaid'}</Text>
                 <Text
                   style={{color: red, textAlign: 'right', fontWeight: '700'}}>
                   {dataProfile.unpaid.toLocaleString('id-ID', {
@@ -150,6 +159,60 @@ const Profile = () => {
                   })}
                 </Text>
               </View>
+            </View>
+          </View>
+
+          {/* Score */}
+          <View
+            style={[
+              defaultStyles.cardContainer,
+              {backgroundColor: styleTheme.color40},
+            ]}>
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <Text style={{color: styleTheme.inverseColor}}>
+                {'Grade Point'}
+              </Text>
+              <Text style={{color: styleTheme.inverseColor}}>{'data'}</Text>
+            </View>
+            <View
+              style={[
+                defaultStyles.line,
+                {backgroundColor: styleTheme.inverseColor},
+              ]}
+            />
+            <View>
+              <FlatList
+                data={dataProfile.gradeScore}
+                keyExtractor={item => item.semester}
+                renderItem={({item}) => {
+                  const width = (item.grade / 4) * (Metrics.screenWidth * 0.5);
+
+                  return (
+                    <View style={{flexDirection: 'row', marginBottom: 5}}>
+                      <Text
+                        style={{width: 150, color: styleTheme.inverseColor}}>
+                        {item.semester}
+                      </Text>
+                      <View
+                        style={{
+                          width: width,
+                          backgroundColor:
+                            item.grade < 2.5
+                              ? red
+                              : item.grade < 3.33
+                              ? orange
+                              : green,
+                          justifyContent: 'flex-end',
+                          flexDirection: 'row',
+                          paddingHorizontal: 5,
+                        }}>
+                        <Text style={{color: black}}>{item.grade}</Text>
+                      </View>
+                    </View>
+                  );
+                }}
+              />
             </View>
           </View>
         </ScrollView>

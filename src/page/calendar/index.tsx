@@ -10,7 +10,7 @@ import {
 import {Calendar} from 'react-native-calendars';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import BBottomNavigation from '../../component/bottomNavigation';
-import {colorTheme, white} from '../../component/color';
+import {colorTheme, red, white} from '../../component/color';
 import moment from 'moment';
 import {ScrollView} from 'react-native-gesture-handler';
 import {defaultStyles} from '../../component/defaultStyles';
@@ -65,6 +65,7 @@ const CalendarScreen = () => {
             textMonthFontWeight: '700',
             textSectionTitleColor: colorTheme({isDarkMode, picColor: '!color'}),
             selectedDotColor: colorTheme({isDarkMode, picColor: 'red'}),
+            arrowColor: colorTheme({isDarkMode, picColor: 'blue'})
           }}
         />
         <ScrollView>
@@ -107,7 +108,6 @@ const CalendarScreen = () => {
                               justifyContent: 'space-between',
                             }}>
                             <View style={{gap: 2}}>
-                              <Text>{`${dateMatch}`}</Text>
                               <Text
                                 style={{
                                   fontSize: 18,

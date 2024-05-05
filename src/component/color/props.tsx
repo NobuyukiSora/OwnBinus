@@ -7,5 +7,11 @@ export interface colorThemeProps {
     | '!color'
     | '!colorTransparant40'
     | 'red'
-    | 'blue';
+    | 'blue'
+    | 'orange'
+    | 'yellow'
+    | 'cyan'
+    | 'purple'
+    | 'green'
+    | 'pink'
 }

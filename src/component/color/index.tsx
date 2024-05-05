@@ -1,17 +1,37 @@
 import React from 'react';
 import {colorThemeProps} from './props';
 
-export const red = '#FF5959';
-export const lightRed = '#D35050';
-export const darkRed = '#B00000'
+export const red = '#FF5C5C';
+export const lightRed = '#FFC0C0';
+export const darkRed = '#C72E2E';
 
 export const blue = '#5CB1FF';
 export const lightBlue = '#77A2C9';
-export const darkBlue = '#026ACA';
+export const darkBlue = '#0500FF';
 
-export const yellow = '#FFEE92';
-export const green = '#AAFFB8';
-export const orange = '#FFC46D';
+export const orange = '#FFB052';
+export const lightOrange = '#FFD9AC';
+export const darkOrange = '#BF7A29';
+
+export const yellow = '#FFDA57';
+export const lightYellow = '#FFF0B9';
+export const darkYellow = '#C6A42D';
+
+export const green = '#60FF67';
+export const lightGreen = '#92FF96';
+export const darkGreen = '#27C42E';
+
+export const cyan = '#67DBFF';
+export const lightCyan = '#99E6FF';
+export const darkCyan = '#309EC1';
+
+export const purple = '#6066FF';
+export const lightPurple = '#AEB1FF';
+export const darkPurple = '#1B22BD';
+
+export const pink = '#FC78FF';
+export const lightPink = '#FDB1FF';
+export const darkPink = '#A83EAA';
 
 export const white = '#ffffff';
 export const black = '#000000';
@@ -37,9 +57,21 @@ export const colorTheme = (props: colorThemeProps): string => {
     case '!colorTransparant40':
       return isDarkMode ? transparantWhite40 : transparantBlack40;
     case 'red':
-      return isDarkMode ? red : lightRed;
+      return isDarkMode ? lightRed : darkRed;
     case 'blue':
-      return isDarkMode ? blue : darkBlue;
+      return isDarkMode ? lightBlue : darkBlue;
+    case 'orange':
+      return isDarkMode ? lightOrange : darkOrange;
+    case 'yellow':
+      return isDarkMode ? lightYellow : darkYellow;
+    case 'green':
+      return isDarkMode ? lightGreen : darkGreen;
+    case 'cyan':
+      return isDarkMode ? lightCyan : darkCyan;
+    case 'purple':
+      return isDarkMode ? lightPurple : darkPurple;
+    case 'pink':
+      return isDarkMode ? lightPink : darkPink;
     default:
       return isDarkMode ? black : white;
   }

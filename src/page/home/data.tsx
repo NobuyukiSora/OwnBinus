@@ -7,12 +7,32 @@ export const dataProfile = {
   paid: 10000000,
   unpaid: 500000,
   gradeScore: [
-    {semester: 'Odd Semester, 2020', grade: 3.00},
-    {semester: 'Even Semester, 2020', grade: 1.70},
-    {semester: 'Odd Semester, 2021', grade: 4.00},
-  ]
-  
-}
+    {semester: 'Odd Semester, 2020', grade: 3.0},
+    {semester: 'Even Semester, 2020', grade: 1.7},
+    {semester: 'Odd Semester, 2021', grade: 4.0},
+  ],
+};
+
+export const scheduleData = [
+  {
+    schedule: '05/05/2024',
+    course: 'Web Design',
+    class: 'LA01 - LEC',
+    session: 'HTML introduction',
+  },
+  {
+    schedule: '02/05/2024',
+    course: 'District Matematic',
+    class: 'LA02 - LEC',
+    session: 'Geometry',
+  },
+  {
+    schedule: '24/05/2024',
+    course: 'Basic Programing',
+    class: 'LA02 - LEC',
+    session: 'C++',
+  },
+];
 
 export const scoreData = [
   {title: 'GPA', score: '3.00', color: yellow},

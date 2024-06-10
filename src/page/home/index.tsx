@@ -1,33 +1,29 @@
+import moment from 'moment';
 import {
   FlatList,
   Image,
   ImageBackground,
   ScrollView,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  useColorScheme,
+  useColorScheme
 } from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import BBottomNavigation from '../../component/bottomNavigation';
 import {
   black,
-  green,
-  orange,
   red,
   transparantBlack40,
   transparantBlack70,
   transparantWhite40,
   transparantWhite70,
-  white,
-  yellow,
+  white
 } from '../../component/color';
-import {Metrics} from '../../component/metrics';
+import { Metrics } from '../../component/metrics';
 import Clock from '../../image/icon/Ico-Clock.svg';
-import {announcement, dataProfile, ongoingClass, scoreData, upcomingClass} from './data';
-import moment from 'moment';
 import navigationAction from '../../navigation/navigationAction';
+import { announcement, dataProfile, ongoingClass, scoreData, upcomingClass } from './data';
 
 const HomeScreen = () => {
   const insets = useSafeAreaInsets();

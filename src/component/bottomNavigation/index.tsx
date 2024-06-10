@@ -27,7 +27,7 @@ const BBottomNavigation = () => {
         <TouchableOpacity onPress={() => navigationAction.resetNavigation('CalendarScreen', {})}>
           <Schadule height={20} width={20} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigationAction.resetNavigation('QRScreen', {})}>
           <Health height={20} width={20} />
         </TouchableOpacity>
       </View>

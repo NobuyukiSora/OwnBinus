@@ -11,6 +11,8 @@ import {
     transparantWhite70,
     white,
   } from '../../component/color';
+import { Camera, useCameraDevice, useCameraPermission } from "react-native-vision-camera";
+import { useIsFocused } from "@react-navigation/native";
 
 const QRScreen = () => {
     const insets = useSafeAreaInsets();
@@ -22,6 +24,13 @@ const QRScreen = () => {
     color70: isDarkMode ? transparantBlack70 : transparantWhite70,
   };
 
+  // open back camera
+  const device = useCameraDevice('back')
+
+  // run the camera while focus in page
+  const isFocused = useIsFocused()
+
+
     return(
         <View style={{flex:1}}>
             <ImageBackground
@@ -32,11 +41,28 @@ const QRScreen = () => {
           backgroundColor: styleTheme.color,
           paddingTop: insets.top,
         }}>
-
+          
+        <Camera
+        style={{}}
+        device={device}
+        isActive={true}/>
         </ImageBackground>
 
         </View>
     )
 }
+
+// const device = useCameraDevice('back')
+//   const { hasPermission } = useCameraPermission()
+
+//   if (!hasPermission) return <PermissionsPage />
+//   if (device == null) return <NoCameraDeviceError />
+//   return (
+//     <Camera
+//       style={StyleSheet.absoluteFill}
+//       device={device}
+//       isActive={true}
+//     />
+//   )
 
 export default QRScreen

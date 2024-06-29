@@ -26,7 +26,7 @@ const Header: React.FunctionComponent<HeaderProps> = props => {
         style={{
           justifyContent: 'center',
           alignContent: 'center',
-          width: Metrics.screenWidth
+          width: Metrics.screenWidth,
         }}>
         {!!title ? (
           <Text

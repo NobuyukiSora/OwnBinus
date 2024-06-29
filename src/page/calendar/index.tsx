@@ -65,7 +65,7 @@ const CalendarScreen = () => {
             textMonthFontWeight: '700',
             textSectionTitleColor: colorTheme({isDarkMode, picColor: '!color'}),
             selectedDotColor: colorTheme({isDarkMode, picColor: 'red'}),
-            arrowColor: colorTheme({isDarkMode, picColor: 'blue'})
+            arrowColor: colorTheme({isDarkMode, picColor: 'blue'}),
           }}
         />
         <ScrollView>
@@ -91,12 +91,12 @@ const CalendarScreen = () => {
                 data={scheduleData}
                 keyExtractor={item => item.course}
                 renderItem={({item}) => {
-                    const scheduleCourse = moment(item.schedule, 'DD/MM/YYYY');
-                    const selectedDate = moment(selected, 'DD/MM/YYYY');
-                    const today = moment();
-                    
-                    const daysDifference = scheduleCourse.diff(today, 'days');
-                    const dateMatch = scheduleCourse.isSame(selectedDate, 'days');
+                  const scheduleCourse = moment(item.schedule, 'DD/MM/YYYY');
+                  const selectedDate = moment(selected, 'DD/MM/YYYY');
+                  const today = moment();
+
+                  const daysDifference = scheduleCourse.diff(today, 'days');
+                  const dateMatch = scheduleCourse.isSame(selectedDate, 'days');
 
                   return (
                     <View>
